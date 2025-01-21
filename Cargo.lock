@@ -193,6 +193,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "gitflux"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "clap-verbosity-flag",
+ "env_logger",
+ "git2",
+ "log",
+]
+
+[[package]]
 name = "heck"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -569,17 +580,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
-]
-
-[[package]]
-name = "testproject"
-version = "0.1.0"
-dependencies = [
- "clap",
- "clap-verbosity-flag",
- "env_logger",
- "git2",
- "log",
 ]
 
 [[package]]

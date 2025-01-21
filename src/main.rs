@@ -1,10 +1,10 @@
-use git2::Repository;
-use std::path::Path;
+use std::str;
 use clap::{Parser, Subcommand};
 use clap_verbosity_flag::Verbosity;
 use log::info;
 
 include!("types.rs");
+include!("repo_actions.rs");
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
@@ -34,37 +34,39 @@ enum Commands {
     },
 }
 
-fn validate_repo(path: String) -> Repository {
-        let _relpath = Path::new(&path);
-        Repository::discover(_relpath).unwrap()
-}
-
-fn validate_root_tag(repo: &Repository) -> bool {
-    let _refmatch = repo.find_reference("");
-
-    for (_i, item) in _refmatch.iter().enumerate() {
-        println!("enumerating reference {}", item.name().unwrap().to_string());
-
-        if item.is_tag() {
-            println!("tag found: {}", item.name().unwrap().to_string());
-        }
-    }
-
-    return false;
-}
-
 fn main() {
     let _args = GlobalOptions::parse();
-    let _discovery_directories = [String::from(".")];
-    
+    let _discovery_directories = [String::from(".")]; 
     env_logger::Builder::new().filter_level(_args.verbose.log_level_filter()).init();
 
     match &_args.command_list {
         Some(Commands::Tag { tag_schema }) => {
            info!("bumping version {}", (String::from(tag_schema)));
-           let _rep = validate_repo(_args.repo_path);
-           let _res = validate_root_tag(&_rep);
 
+           let _rep = match Repository::open(&_args.repo_path) {
+                Ok(r) => {
+                    info!("opened repo successfully at {}", r.path().to_string_lossy());
+                    info!("head: {}", r.head().unwrap().name().unwrap().to_string()); 
+
+                    let mut _matched_tag_name: Option<String> = Default::default();
+
+                    let _b = r.tag_foreach( |_o, n| -> bool {
+                        let _tag_name = String::from_utf8(n.to_vec()).unwrap();
+
+                        if _tag_name.contains("refs/tags/0.0.1") {
+                            _matched_tag_name = Some(_tag_name);
+                            false
+                        } else {_matched_tag_name = None; true}
+                    });
+                    
+                    let _b = match _matched_tag_name {
+                        Some(_b) => {info!("found root tag: {}", _b)}
+                        None => {panic!("could not find root tag");}
+                    };
+
+                },
+                Err(_e) => info!("could not discover repo at path {}", &_args.repo_path),
+           };
 
         }
 
