@@ -50,14 +50,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Gitflux is a work in progress proof of concept to further deepen my understanding of Rust,
 This tool is not intended for production use-cases yet, but might be in the future. Please use at your own risk.
 
 A lot of this README is still WIP so forgive any boilerplate still left over, thanks very much to othneildrew and his awesome readme template!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
