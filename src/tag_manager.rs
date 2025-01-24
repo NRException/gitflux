@@ -10,7 +10,6 @@ fn raw_tag_to_version(s: &String) -> Version {
     return Version::parse(&_string_split[2]).unwrap();
 }
 
-#[allow(dead_code)]
 impl GitTagManager {
     fn new(associated_repo: Repository) -> GitTagManager {
         let mut _r = GitTagManager {
@@ -64,5 +63,20 @@ impl GitTagManager {
         self.tag_objects = _r;
         self.set_root_tag();
         self.set_latest_tag();
+    }
+}
+
+#[cfg(test)]
+mod tests{
+    use super::*;
+
+    #[test]
+    fn test_git_tag_manager_init() {
+        let _rep = match Repository::open(".") {
+            Ok(r) => {
+                let _cache = GitTagManager::new(r);
+            },
+            Err(_e) => info!("could not discover repo at path ."),
+        };
     }
 }

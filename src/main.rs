@@ -3,7 +3,7 @@ use clap::{Parser, Subcommand};
 use clap_verbosity_flag::Verbosity;
 use log::info;
 
-include!("types.rs");
+include!("generic_types.rs");
 include!("repo_actions.rs");
 include!("tag_manager.rs");
 
