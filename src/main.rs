@@ -1,10 +1,10 @@
 use std::str;
+use git2::Repository;
 use clap::{Parser, Subcommand};
 use clap_verbosity_flag::Verbosity;
 use log::info;
 
 include!("generic_types.rs");
-include!("repo_actions.rs");
 include!("tag_manager.rs");
 
 #[derive(Parser, Debug)]
@@ -42,7 +42,13 @@ fn main() {
     match &_args.command_list {
         Some(Commands::Tag { tag_schema }) => {
             let _ts: VersionSchema = String::into(tag_schema.to_owned());
-            bump_tag(_ts, _args.repo_path);
+            let _rep = match Repository::open(&_args.repo_path) {
+                Ok(r) => {
+                    let mut _cache = GitTagManager::new(r);
+                    _cache.bump_latest_tag(_ts, Some(1)).unwrap();
+                },
+                Err(_e) => panic!("could not discover repo at path ."),
+            };
         },
         None => {},
     }

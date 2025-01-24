@@ -22,8 +22,46 @@ impl GitTagManager {
         _r
     }
 
+    pub fn bump_latest_tag(&mut self, v: VersionSchema, i: Option<u64>) -> Result<(), git2::Error> {
+        info!("bumping latest tag...");
+        match i {
+            Some (inc) => {
+                info!("incremental specified, bumping by {:?}", inc);
+                let mut _incremental_tag = self.latest_tag.to_owned();
+                if v.major {_incremental_tag.major += inc}
+                if v.minor {_incremental_tag.minor += inc}
+                if v.patch {_incremental_tag.patch += inc}
 
-    fn set_latest_tag(&mut self) -> () {
+                // Get latest commit and assign tag
+                let obj = self.associated_repo.revparse_single("HEAD")?;
+                self.associated_repo.tag_lightweight(_incremental_tag.to_string().as_str(), &obj, false)?;
+                
+                drop(obj); //I'm not so sure about this scoob! 󰩄, done to drop scope of obj so
+                //ownership can be returned to call:
+                self.refresh_cache();
+
+                Ok(())
+            }
+            None => {
+                info!("no incremental tag version specified, bumping by 1 according to VersionSchema");
+                let mut _incremental_tag = self.latest_tag.to_owned();
+                if v.major {_incremental_tag.major += 1}
+                if v.minor {_incremental_tag.minor += 1}
+                if v.patch {_incremental_tag.patch += 1}
+
+                let obj = self.associated_repo.revparse_single("HEAD")?;
+                self.associated_repo.tag_lightweight(_incremental_tag.to_string().as_str(), &obj, false)?;
+
+                drop(obj); 
+                self.refresh_cache();
+
+                Ok(())
+            }
+        }
+
+    }
+
+    fn init_latest_tag(&mut self) -> () {
         info!("getting latest tag...");
 
         let mut _tags = self.tag_objects.clone();
@@ -36,7 +74,7 @@ impl GitTagManager {
         self.latest_tag = raw_tag_to_version(&_latest_tag);
     }
 
-    fn set_root_tag(&mut self) -> () {
+    fn init_root_tag(&mut self) -> () {
         info!("validating root tag exists...");
 
         let mut _match_term = String::from("refs/tags/0.0.1");
@@ -61,8 +99,8 @@ impl GitTagManager {
         });
 
         self.tag_objects = _r;
-        self.set_root_tag();
-        self.set_latest_tag();
+        self.init_root_tag();
+        self.init_latest_tag();
     }
 }
 
@@ -79,4 +117,23 @@ mod tests{
             Err(_e) => info!("could not discover repo at path ."),
         };
     }
+
+    #[test]
+    fn test_git_tag_manager_bump() -> Result<(), git2::Error>{
+        let _rep = match Repository::open(".") {
+            Ok(r) => {
+                // This should call all private functions so is a good test for all.
+                let mut _cache = GitTagManager::new(r);
+
+                _cache.bump_latest_tag(VersionSchema{major: false, minor: false, patch:true}, Some(1))?;
+                _cache.bump_latest_tag(VersionSchema{major: false, minor: true, patch:false}, Some(1))?;
+                _cache.bump_latest_tag(VersionSchema{major: true, minor: false, patch:false}, Some(1))?;
+            },
+            Err(_e) => panic!("could not discover repo at path ."),
+        };
+
+        Ok(())
+    }
+
+
 }
