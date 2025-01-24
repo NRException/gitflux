@@ -5,6 +5,7 @@ use log::info;
 
 include!("types.rs");
 include!("repo_actions.rs");
+include!("tag_manager.rs");
 
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
