@@ -11,9 +11,9 @@ impl From<String> for VersionSchema {
         let _s_upper = s.to_uppercase();
         let mut _r = VersionSchema{major: false, minor: false, patch: false};
 
-        if _s_upper == "MAJOR" {_r.major = false};
-        if _s_upper == "MINOR" {_r.minor = false};
-        if _s_upper == "PATCH" {_r.patch = false};
+        if _s_upper == "MAJOR" {_r.major = true};
+        if _s_upper == "MINOR" {_r.minor = true};
+        if _s_upper == "PATCH" {_r.patch = true};
 
         _r
     }
