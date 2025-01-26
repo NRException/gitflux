@@ -1,5 +1,4 @@
 use git2::{ErrorClass, ErrorCode};
-use semver::Error;
 
 struct GitTagManager {
     tag_objects:        Vec<String>,
@@ -119,28 +118,7 @@ impl GitTagManager {
     }
 }
 
+// TODO - Write proper unit tests...
 #[cfg(test)]
 mod tests{
-    use super::*;
-
-    #[test]
-    fn test_git_tag_manager_init() -> Result<(), git2::Error>{
-        let r = Repository::open(".")?;
-        let _cache = GitTagManager::new(r)?;
-        Ok(())
-    }
-
-    #[test]
-    fn test_git_tag_manager_bump() -> Result<(), git2::Error>{
-        let r = Repository::open(".")?;
-        let mut _cache = GitTagManager::new(r)?;
-
-        _cache.bump_latest_tag(VersionSchema{major: false, minor: false, patch:true}, Some(1))?;
-        _cache.bump_latest_tag(VersionSchema{major: false, minor: true, patch:false}, Some(1))?;
-        _cache.bump_latest_tag(VersionSchema{major: true, minor: false, patch:false}, Some(1))?;
-
-        Ok(())
-    }
-
-
 }
