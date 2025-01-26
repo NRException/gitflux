@@ -90,7 +90,7 @@ You can also pass the `--tag-schema major|minor|patch` or `-t major|minor|patch`
 gitflux bump --tag-schma minor
 ```
 
-<img src="images/bumptagallvers.gif" alt="bumptagallvers" width="800" height="500">
+<img src="images/bumptagallvers.gif" alt="bumptagallvers" width="800" height="600">
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
