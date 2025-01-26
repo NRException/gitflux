@@ -59,10 +59,8 @@ A lot of this README is still WIP so forgive any boilerplate still left over, th
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
 ### Tag bumping
-Gitflux provides full incremental management of your tags in your repo using simple semver formatting, no matter what your strategy, you can initialise a simple tag pointing to the HEAD of your repository using 
+Gitflux provides full incremental management of your tags in your repo using simple semver formatting, any git tags that cannot be parsed to a simple semver format will be ignored. You can initialise a simple tag pointing to the HEAD of your repository using 
 
 ```bash
 gitflux bump --init
