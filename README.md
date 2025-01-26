@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/nrexception/gitflux">
-    <img src="images/banner.jpeg" alt="Logo" width="800" height="400">
+    <img src="images/banner.jpeg" alt="Logo" width="800" height="550">
   </a>
 
 <h3 align="center">Gitflux</h3>
@@ -74,7 +74,7 @@ gitflux bump --init -vvvv
 ```
 This will provide the highest level of verbosity (information).
 
-<img src="images/bumpinit.gif" alt="inittag" width="800" height="300">
+<img src="images/bumpinit.gif" alt="inittag" width="800" height="400">
 
 Once you have initialised a semver tag, you can simply bump the patch level using
 
@@ -82,7 +82,7 @@ Once you have initialised a semver tag, you can simply bump the patch level usin
 gitflux bump
 ```
 
-<img src="images/bumptag.gif" alt="bumptag" width="800" height="300">
+<img src="images/bumptag.gif" alt="bumptag" width="800" height="400">
 
 You can also pass the `--tag-schema major|minor|patch` or `-t major|minor|patch` flags to override the tag version that gitflux will bump your tag by:
 
