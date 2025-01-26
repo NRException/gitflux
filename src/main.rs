@@ -2,7 +2,7 @@ use std::str;
 use git2::Repository;
 use clap::{Parser, Subcommand};
 use clap_verbosity_flag::Verbosity;
-use log::info;
+use log::{info, warn};
 
 include!("generic_types.rs");
 include!("tag_manager.rs");
@@ -54,6 +54,7 @@ fn main() {
                         let mut _cache = GitTagManager::new(r).unwrap();
                         info!("--init specified, creating tag with ver 0.0.1");
                         _cache.create_version_tag(Version::new(0,0,1)).unwrap();
+
                     } else {
                         let mut _cache = GitTagManager::new(r).unwrap();
                         _cache.bump_latest_tag(_ts, Some(1)).unwrap();
