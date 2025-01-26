@@ -61,6 +61,37 @@ A lot of this README is still WIP so forgive any boilerplate still left over, th
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
+Gitflux provides full incremental management of your tags in your repo using simple semver formatting, no matter what your strategy, you can initialise a simple tag pointing to the HEAD of your repository using 
+
+```bash
+gitflux bump --init
+```
+
+
+You can also increase logging level by parsing the `-v` flag, this can be used incrementally to increase the logging level, each 'v' representing a greater level of logging, for example:
+```bash
+gitflux bump --init -vvvv
+```
+This will provide the highest level of verbosity (information).
+
+<img src="images/bumpinit.gif" alt="inittag" width="500" height="300">
+
+Once you have initialised a semver tag, you can simply bump the patch level using
+
+```bash
+gitflux bump
+```
+
+<img src="images/bumptag.gif" alt="bumptag" width="500" height="300">
+
+You can also pass the `--tag-schema major|minor|patch` or `-t major|minor|patch` flags to override the tag version that gitflux will bump your tag by:
+
+```bash
+gitflux bump --tag-schma minor
+```
+
+<img src="images/bumptagallvers.gif" alt="bumptagallvers" width="500" height="300">
+
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
