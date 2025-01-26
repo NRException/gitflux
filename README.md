@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/nrexception/gitflux">
-    <img src="images/banner.jpeg" alt="Logo" width="800" height="500">
+    <img src="images/banner.jpeg" alt="Logo" width="800" height="450">
   </a>
 
 <h3 align="center">Gitflux</h3>
