@@ -82,7 +82,7 @@ Once you have initialised a semver tag, you can simply bump the patch level usin
 gitflux bump
 ```
 
-<img src="images/bumptag.gif" alt="bumptag" width="800" height="300">
+<img src="images/bumptag.gif" alt="bumptag" width="800" height="500">
 
 You can also pass the `--tag-schema major|minor|patch` or `-t major|minor|patch` flags to override the tag version that gitflux will bump your tag by:
 
