@@ -51,7 +51,7 @@
 ## About The Project
 
 Gitflux is a work in progress proof of concept to further deepen my understanding of Rust,
-This tool is not intended for production use-cases yet, but might be in the future. Please use at your own risk.
+This tool is not intended for production usecases yet, but might be in the future. Please use at your own risk.
 
 A lot of this README is still WIP so forgive any boilerplate still left over, thanks very much to othneildrew and his awesome readme template!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -104,7 +104,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Create development branch and tag releases with gitflux.
 - [ ] Configure global settings serde parsing.
 - [ ] CI/CD building for releases.
-- [ ] Figure out conventional commit messaging and commit handling
+- [ ] Lock step tag version with build / release version? Rust is doable, other apps maybe?
+- [ ] Implement conventional commit message manager and commit handling
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
