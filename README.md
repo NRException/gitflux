@@ -69,9 +69,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Get tag bumping functionality up and running.
+- [x] Get tag bumping functionality up and running.
+- [ ] Create development branch and tag releases with gitflux.
+- [ ] Configure global settings serde parsing.
+- [ ] CI/CD building for releases.
 - [ ] Figure out conventional commit messaging and commit handling
-- [ ] Other cool stuff to come! 
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
