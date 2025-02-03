@@ -21,8 +21,8 @@
   </p>
 
   <p align="center">
-  ![Master branch status](https://img.shields.io/github/checks-status/nrexception/gitflux/master)
-  ![Develop branch status](https://img.shields.io/github/checks-status/nrexception/gitflux/develop)
+    <img alt="GitHub branch status" src="https://img.shields.io/github/checks-status/nrexception/gitflux/master">
+    <img alt="GitHub branch status" src="https://img.shields.io/github/checks-status/nrexception/gitflux/develop">
   </p>
 </div>
 
