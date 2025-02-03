@@ -90,7 +90,6 @@ gitflux bump --tag-schma minor
 
 <img src="images/bumptagallvers.gif" alt="bumptagallvers" width="800" height="600">
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,8 +104,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] CI/CD building for releases.
 - [ ] Lock step tag version with build / release version? Rust is doable, other apps maybe?
 - [ ] Implement conventional commit message manager and commit handling
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
