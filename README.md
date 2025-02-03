@@ -99,7 +99,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ## Roadmap
 
 - [x] Get tag bumping functionality up and running.
-- [ ] Create development branch and tag releases with gitflux.
+- [x] Create development branch 
+- [ ] Tag releases from dev branch to master with gitflux
 - [ ] Configure global settings serde parsing.
 - [ ] CI/CD building for releases.
 - [ ] Lock step tag version with build / release version? Rust is doable, other apps maybe?
