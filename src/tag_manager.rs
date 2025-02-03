@@ -81,7 +81,7 @@ impl GitTagManager {
 
     }
 
-    pub fn bump_latest_tag(&mut self, v: VersionSchema, i: Option<u64>) -> Result<(), git2::Error> {
+    pub fn bump_latest_tag(&mut self, v: VersionTagSchema, i: Option<u64>) -> Result<(), git2::Error> {
         info!("bumping latest tag...");
         match i {
             Some (inc) => {
@@ -100,7 +100,7 @@ impl GitTagManager {
                 Ok(())
             }
             None => {
-                info!("no incremental tag version specified, bumping by 1 according to VersionSchema");
+                info!("no incremental tag version specified, bumping by 1 according to VersionTagSchema");
                 let mut _incremental_tag = self.get_latest_tag()?;
                 info!("latest tag: {}", _incremental_tag);
                 if v.major {_incremental_tag.major += 1}

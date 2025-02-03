@@ -46,7 +46,7 @@ fn main() {
 
     match &_args.command_list {
         Some(Commands::Bump { tag_schema, init }) => {
-            let _ts: VersionSchema = String::into(tag_schema.to_owned());
+            let _ts: VersionTagSchema = String::into(tag_schema.to_owned());
             
             // TODO - Handle errors passed up correctly!
             let _rep = match Repository::open(&_args.repo_path) {
