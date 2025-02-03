@@ -58,7 +58,7 @@ fn main() {
                         Err(e) => {error!("{}", e.to_string()); exit(1)}
                     };
 
-                    if init.to_owned() {
+                    if *init {
                         info!("--init specified, creating tag with ver 0.0.1");
                         
                         match tm.create_version_tag(Version::new(0,0,1)) {
