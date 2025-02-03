@@ -19,6 +19,11 @@
     &middot;
     <a href="https://github.com/nrexception/gitflux/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
+
+  <p align="center">
+  ![Master branch status](https://img.shields.io/github/checks-status/nrexception/gitflux/master)
+  ![Develop branch status](https://img.shields.io/github/checks-status/nrexception/gitflux/develop)
+  </p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -47,9 +52,6 @@
   </ol>
 </details>
 
-## Status
-![Master branch status](https://img.shields.io/github/checks-status/nrexception/gitflux/master)
-![Develop branch status](https://img.shields.io/github/checks-status/nrexception/gitflux/develop)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
