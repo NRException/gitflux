@@ -47,6 +47,10 @@
   </ol>
 </details>
 
+## Status
+![Master branch status](https://img.shields.io/github/checks-status/nrexception/gitflux/master)
+![Develop branch status](https://img.shields.io/github/checks-status/nrexception/gitflux/develop)
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
