@@ -7,6 +7,7 @@ use log::{info, warn, error};
 
 include!("generic_types.rs");
 include!("tag_manager.rs");
+include!("commit_manager.rs");
 
 #[derive(Parser, Debug)]
 #[command(version, about="gitflux - simple semver tag and commit management", long_about = None, arg_required_else_help=true)]
