@@ -36,6 +36,13 @@ enum Commands {
         #[clap(short, long , default_value_t=false)]
         init: bool,
     },
+
+    /// Provides conventional commit message management
+    Commit {
+        /// Message to format into conventional commit 
+        #[clap(short, long)]
+        message: String,
+    },
 }
 
 
@@ -48,7 +55,6 @@ fn main() {
         Some(Commands::Bump { tag_schema, init }) => {
             let _ts: VersionTagSchema = String::into(tag_schema.to_owned());
             
-            // TODO - Handle errors passed up correctly!
             let _rep = match Repository::open(&_args.repo_path) {
                 Ok(r) => {
 
@@ -76,7 +82,16 @@ fn main() {
                 Err(_e) => panic!("could not discover repo at path {}", &_args.repo_path),
             };
         },
+
+        Some(Commands::Commit {message}) => {
+            
+            let _rep = match Repository::open(&_args.repo_path) {
+                Ok(r) => {
+
+                },
+                Err(_e) => panic!("could not discover repo at path {}", &_args.repo_path),
+            };
+        },
         None => {},
     }
-
 }
