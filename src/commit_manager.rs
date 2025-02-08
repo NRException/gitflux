@@ -4,7 +4,7 @@ struct GitCommitManager {
 
 impl GitCommitManager {
     fn new(associated_repo: Repository) -> Result<GitCommitManager, git2::Error> {
-        let mut _r = GitCommitManager {
+        let _r = GitCommitManager {
             associated_repo, 
         };
 
