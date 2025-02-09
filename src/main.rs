@@ -93,7 +93,7 @@ fn main() {
             
             let _rep = match Repository::open(&_args.repo_path) {
                 Ok(r) => {
-                    // Init new tag manager in current repo
+                    // Init new commit manager in current repo
                     let mut cm = match GitCommitManager::new(r) {
                         Ok(r) => r, 
                         Err(e) => {error!("{}", e.to_string()); exit(1)}
