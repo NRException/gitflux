@@ -43,6 +43,11 @@ enum Commands {
         /// Message to format into conventional commit 
         #[clap(short, long)]
         message: String,
+
+        /// If specified, this will print the commit message rather than adding the current staged
+        /// changes to a new commit.
+        #[clap(short, long , default_value_t=false)]
+        print_only: bool,
     },
 }
 
@@ -84,7 +89,7 @@ fn main() {
             };
         },
 
-        Some(Commands::Commit {message}) => {
+        Some(Commands::Commit {message, print_only}) => {
             
             let _rep = match Repository::open(&_args.repo_path) {
                 Ok(r) => {

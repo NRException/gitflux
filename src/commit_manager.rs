@@ -67,7 +67,7 @@ impl GitCommitManager {
             }, 
             None => "".to_owned()
         };
-        r = r.replace("<opt_footers>",  footers.as_str());
+        r = r.replace("<opt_footers>",  &footers);
         r
     }
 }
