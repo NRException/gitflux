@@ -1,1 +1,5 @@
-/target
+# IDE metadata
+.idea/
+
+# Build artifacts
+target/
