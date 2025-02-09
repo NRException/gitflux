@@ -19,11 +19,6 @@
     &middot;
     <a href="https://github.com/nrexception/gitflux/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
-
-  <p align="center">
-    <img alt="GitHub branch status" src="https://img.shields.io/github/checks-status/nrexception/gitflux/master">
-    <img alt="GitHub branch status" src="https://img.shields.io/github/checks-status/nrexception/gitflux/develop">
-  </p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
@@ -52,7 +47,6 @@
   </ol>
 </details>
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -66,7 +60,7 @@ A lot of this README is still WIP so forgive any boilerplate still left over, th
 ## Usage
 
 ### Tag bumping
-Gitflux provides full incremental management of your tags in your repo using simple semver formatting, any git tags that cannot be parsed to a simple semver format will be ignored. You can initialise a simple tag pointing to the HEAD of your repository using 
+Gitflux provides full incremental management of your tags in your repo using simple semver formatting, any git tags that cannot be parsed to a simple semver format will be ignored. You can initialise a simple tag pointing to the HEAD of your repository using
 
 ```bash
 gitflux bump --init
@@ -96,6 +90,7 @@ gitflux bump --tag-schma minor
 
 <img src="images/bumptagallvers.gif" alt="bumptagallvers" width="800" height="600">
 
+_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,12 +99,14 @@ gitflux bump --tag-schma minor
 ## Roadmap
 
 - [x] Get tag bumping functionality up and running.
-- [x] Create development branch 
+- [x] Create development branch
 - [ ] Tag releases from dev branch to master with gitflux
 - [ ] Configure global settings serde parsing.
 - [ ] CI/CD building for releases.
 - [ ] Lock step tag version with build / release version? Rust is doable, other apps maybe?
 - [ ] Implement conventional commit message manager and commit handling
+
+See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -134,7 +131,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the GNU GENERAL PUBLIC LICENSE. See `LICENSE.txt` for more information.
+Distributed under the GNU GENERAL PUBLIC LICENSE. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
