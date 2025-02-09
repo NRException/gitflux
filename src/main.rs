@@ -38,7 +38,7 @@ enum Commands {
         init: bool,
     },
 
-    /// Provides conventional commit message management
+    /// Provides conventional commit management
     Commit {
         /// Message to format into conventional commit 
         #[clap(short, long)]
@@ -93,7 +93,15 @@ fn main() {
             
             let _rep = match Repository::open(&_args.repo_path) {
                 Ok(r) => {
+                    // Init new tag manager in current repo
+                    let mut cm = match GitCommitManager::new(r) {
+                        Ok(r) => r, 
+                        Err(e) => {error!("{}", e.to_string()); exit(1)}
+                    };
 
+                    if *print_only {
+                        // TODO - Figure this bit out :)
+                    }
                 },
                 Err(_e) => panic!("could not discover repo at path {}", &_args.repo_path),
             };
