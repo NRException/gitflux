@@ -34,8 +34,6 @@ impl CommitType {
     }
 }
 
-
-
 struct GitCommitManager {
     associated_repo:    Repository
 }
