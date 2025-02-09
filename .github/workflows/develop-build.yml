@@ -15,6 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
       - name: Install trunk
         run: curl https://get.trunk.io -fsSL | bash
       - name: Run trunk linting pass
