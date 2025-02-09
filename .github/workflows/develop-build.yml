@@ -1,22 +1,25 @@
 name: Rust build & test develop branch
-
+permissions: read-all
 on:
   push:
-    branches: [ "develop" ]
+    branches: [develop]
   pull_request:
-    branches: [ "develop" ]
+    branches: [develop]
 
 env:
   CARGO_TERM_COLOR: always
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+      - uses: actions/checkout@v4
+      - name: Install trunk
+        run: curl https://get.trunk.io -fsSL | bash
+      - name: Run trunk linting pass
+        run: trunk check
+      - name: Build cargo
+        run: cargo build --verbose
+      - name: Run tests
+        run: cargo test --verbose

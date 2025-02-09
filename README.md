@@ -52,30 +52,35 @@
   </ol>
 </details>
 
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 Gitflux is a work in progress proof of concept to further deepen my understanding of Rust,
 This tool is not intended for production usecases yet, but might be in the future. Please use at your own risk.
 
 A lot of this README is still WIP so forgive any boilerplate still left over, thanks very much to othneildrew and his awesome readme template!
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 ### Tag bumping
-Gitflux provides full incremental management of your tags in your repo using simple semver formatting, any git tags that cannot be parsed to a simple semver format will be ignored. You can initialise a simple tag pointing to the HEAD of your repository using 
+
+Gitflux provides full incremental management of your tags in your repo using simple semver formatting, any git tags that cannot be parsed to a simple semver format will be ignored. You can initialise a simple tag pointing to the HEAD of your repository using
 
 ```bash
 gitflux bump --init
 ```
 
 You can also increase logging level by parsing the `-v` flag, this can be used incrementally to increase the logging level, each 'v' representing a greater level of logging, for example:
+
 ```bash
 gitflux bump --init -vvvv
 ```
+
 This will provide the highest level of verbosity (information).
 
 <img src="images/bumpinit.gif" alt="inittag" width="800" height="400">
@@ -96,15 +101,14 @@ gitflux bump --tag-schma minor
 
 <img src="images/bumptagallvers.gif" alt="bumptagallvers" width="800" height="600">
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
 - [x] Get tag bumping functionality up and running.
-- [x] Create development branch 
+- [x] Create development branch
 - [ ] Tag releases from dev branch to master with gitflux
 - [ ] Configure global settings serde parsing.
 - [ ] CI/CD building for releases.
@@ -113,8 +117,8 @@ gitflux bump --tag-schma minor
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -130,26 +134,25 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the GNU GENERAL PUBLIC LICENSE. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Project Link: [https://github.com/nrexception/gitflux](https://github.com/nrexception/gitflux)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
 [contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
