@@ -6,16 +6,12 @@ struct GitTagManager {
 }
 
 
-fn raw_tag_to_version(s: &String) -> Result<Version, semver::Error> {
-    let _string_split: Vec<&str> = s.split("/").collect(); 
-    Ok(Version::parse(&_string_split[2])?)
-}
 
 impl GitTagManager {
     fn new(associated_repo: Repository) -> Result<GitTagManager, git2::Error> {
         let mut _r = GitTagManager {
-            tag_objects: Vec::new(), 
-            associated_repo, 
+            tag_objects: Vec::new(),
+            associated_repo,
         };
 
         _r.refresh_tags();
@@ -25,16 +21,16 @@ impl GitTagManager {
     fn create_version_tag(&mut self, v: Version) -> Result<(), git2::Error> {
         let obj = self.associated_repo.revparse_single("HEAD")?;
         let t = self.associated_repo.tag_lightweight(v.to_string().as_str(), &obj, false)?;
-        info!("tag created: {} ref: {}", v, t); 
+        info!("tag created: {} ref: {}", v, t);
         Ok(())
     }
 
-    fn refresh_tags(&mut self) -> () {
+    fn refresh_tags(&mut self)  {
         info!("refreshing git tag cache...");
         let mut _r = Vec::new();
 
         let _b = &self.associated_repo.tag_foreach(|_o, n| {
-            let _tag_name = match String::from_utf8(n.to_vec()) {
+            match String::from_utf8(n.to_vec()) {
                 Ok(t) => _r.push(t.clone()),
                 Err(e) => warn!("could not convert tag to string vector dropping tag with error: {}", e.to_string()),
             };
@@ -50,9 +46,9 @@ impl GitTagManager {
         self.refresh_tags();
 
         let mut _tags = self.tag_objects.clone();
-        
-        if _tags.len() > 0 {
-            _tags.reverse(); //sort but backwards. (desc)
+
+        if !_tags.is_empty() {
+            _tags.reverse(); // Sort but backwards. (desc)
 
             for t in _tags.iter() {
                 match raw_tag_to_version(t) {
@@ -66,15 +62,15 @@ impl GitTagManager {
 
             // If we exit the loop without returning a good tag, its a bad day...
             Err(git2::Error::new(
-                ErrorCode::NotFound, 
-                ErrorClass::Tag, 
+                ErrorCode::NotFound,
+                ErrorClass::Tag,
                 "matching semver tag not found. create one with 'bump --init'"
             ))
 
         } else {
             Err(git2::Error::new(
-                ErrorCode::NotFound, 
-                ErrorClass::Tag, 
+                ErrorCode::NotFound,
+                ErrorClass::Tag,
                 "no tags found in repo. create one with 'bump --init'"
             ))
         }
@@ -96,7 +92,7 @@ impl GitTagManager {
                 self.create_version_tag(_incremental_tag)?;
 
                 self.refresh_tags();
-                
+
                 Ok(())
             }
             None => {
@@ -116,6 +112,11 @@ impl GitTagManager {
         }
 
     }
+}
+
+fn raw_tag_to_version(s: &str) -> Result<Version, semver::Error> {
+    let _string_split: Vec<&str> = s.split("/").collect();
+    Version::parse(_string_split[2])
 }
 
 // TODO - Write proper unit tests...
