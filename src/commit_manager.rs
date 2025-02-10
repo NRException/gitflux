@@ -41,9 +41,9 @@ struct GitCommitManager {
 
 impl GitCommitManager {
     fn new(associated_repo: Repository) -> Result<GitCommitManager, git2::Error> {
-        let _r = GitCommitManager { associated_repo };
+        let r = GitCommitManager { associated_repo };
 
-        Ok(_r)
+        Ok(r)
     }
 
     pub fn format_commit(
@@ -78,3 +78,7 @@ impl GitCommitManager {
         r
     }
 }
+
+// TODO - Write proper unit tests...
+#[cfg(test)]
+mod tests_commitmanager {}

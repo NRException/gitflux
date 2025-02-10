@@ -113,6 +113,7 @@ fn main() {
 
                     if *print_only {
                         // TODO - Figure this bit out :)
+                    } else {
                     }
                 }
                 Err(_e) => panic!("could not discover repo at path {}", &_args.repo_path),
