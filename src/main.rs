@@ -42,6 +42,9 @@ enum Commands {
         /// Message to format into conventional commit
         #[clap(short, long)]
         message: String,
+        /// Defines the type of commit. Valid values are,
+        #[clap(short, long)]
+        commit_type: String,
 
         /// If specified, this will print the commit message rather than adding the current staged
         /// changes to a new commit.
@@ -73,7 +76,7 @@ fn main() {
                     };
 
                     if *init {
-                        info!("--init specified, creating tag with ver 0.0.1");
+                        info!("--init specified, creating tag with ver 0.0.1.");
 
                         match tm.create_version_tag(Version::new(0, 0, 1)) {
                             Ok(r) => r,
@@ -113,6 +116,7 @@ fn main() {
 
                     if *print_only {
                         // TODO - Figure this bit out :)
+                        info!("--print-only specified, not commiting.");
                     } else {
                     }
                 }
