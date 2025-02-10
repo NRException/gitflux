@@ -1,3 +1,4 @@
+use clap::ValueEnum;
 use std::fmt;
 
 const COMMIT_TEMPLATE: &'static str =
@@ -5,6 +6,7 @@ const COMMIT_TEMPLATE: &'static str =
 
 //docs / spec here:
 //https://www.conventionalcommits.org/en/v1.0.0/#summary
+#[derive(ValueEnum, Parser, Debug, Clone)]
 enum CommitType {
     FIX,
     FEAT,

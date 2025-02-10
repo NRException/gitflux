@@ -17,7 +17,7 @@ struct GlobalOptions {
     verbose: Verbosity,
 
     #[clap(subcommand)]
-    command_list: Option<Commands>,
+    command_list: Option<Arguments>,
 
     /// Overrides the target path of the repo, can be relative or absolute.
     #[clap(short, long , default_value_t=String::from("."))]
@@ -25,7 +25,7 @@ struct GlobalOptions {
 }
 
 #[derive(Subcommand, Debug)]
-enum Commands {
+enum Arguments {
     /// Provides semver tag management
     Bump {
         /// Overrides version to increment git tag by. Valid values are MAJOR, MINOR, PATCH.
@@ -42,9 +42,19 @@ enum Commands {
         /// Message to format into conventional commit
         #[clap(short, long)]
         message: String,
-        /// Defines the type of commit. Valid values are,
+
+        /// Defines the type of commit.
+        #[clap(short, long, value_enum)]
+        commit_type: CommitType,
+
+        /// Defines the scope of the commit. (can be a file name or generic scope of change)
         #[clap(short, long)]
-        commit_type: String,
+        commit_scope: String,
+
+        /// Defines whether or not the scope is flagged, this will add a "!" to the commit message
+        /// if this is true, intended to draw more attention to a potentially breaking change.
+        #[clap(short, long)]
+        commit_flagged: bool,
 
         /// If specified, this will print the commit message rather than adding the current staged
         /// changes to a new commit.
@@ -61,7 +71,7 @@ fn main() {
         .init();
 
     match &_args.command_list {
-        Some(Commands::Bump { tag_schema, init }) => {
+        Some(Arguments::Bump { tag_schema, init }) => {
             let _ts: VersionTagSchema = String::into(tag_schema.to_owned());
 
             let _rep = match Repository::open(&_args.repo_path) {
@@ -99,8 +109,11 @@ fn main() {
             };
         }
 
-        Some(Commands::Commit {
+        Some(Arguments::Commit {
             message,
+            commit_type,
+            commit_scope,
+            commit_flagged,
             print_only,
         }) => {
             let _rep = match Repository::open(&_args.repo_path) {
@@ -114,9 +127,18 @@ fn main() {
                         }
                     };
 
+                    // IDEA - If certain type of flag exists, add short name of changed files to
+                    // commit scope automagically?
                     if *print_only {
-                        // TODO - Figure this bit out :)
+                        // TODO - Add arg handling for vec<String>
                         info!("--print-only specified, not commiting.");
+                        writeln!(cm.format_commit(
+                            commit_type,
+                            commit_scope,
+                            commit_flagged,
+                            message,
+                            commit_footers
+                        ))
                     } else {
                     }
                 }
